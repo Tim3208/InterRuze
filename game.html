@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
+    <style>
+      * { margin : 0; padding: 0; }
+      html, body { height: 100%; overflow: hidden; }
+      ul, li { list-style:none; }
+      input { display: none; }
+      a { text-decoration:none !important; transition: .5s; }
+      @font-face { font-family:'AppleSDGothicNeoEB'; src: url(fonts/AppleSDGothicNeoEB.ttf) format('truetype'); }
+      @font-face { font-family:'AppleSDGothicNeoUL'; src: url(fonts/AppleSDGothicNeoUL.ttf) format('truetype'); }
+      @font-face { font-family:'AppleSDGothicNeoM'; src: url(fonts/AppleSDGothicNeoM.ttf) format('truetype'); }
+
+
+
+      .logo {     /* 좌측 상단 인터루즈 */
+        float : left;
+        font-family: 'AppleSDGothicNeoM', sans-serif;
+        margin : 30px 0px 30px 130px;
+        font-size : 3em;
+        color : white;
+      }
+      nav { float:right; text-align:center; vertical-align:middle; display:inline-block; margin-right:50px; }
+      nav>ul>li a { display:block; }
+      nav>ul>li { float:left; }
+      nav>ul>li+li { margin-left:1px; }
+      nav>ul>li>a { width:150px; padding:40px 10px; color:#fff; font-size:30px; font-family: 'AppleSDGothicNeoM', sans-serif; }
+      .game { background-color: dimgray; }
+
+      .navbar>li a:visited { text-decoration:none; color:white; }     /* 네비게이션바 링크 데코 제거 */
+      .navbar>li a:hover { color:#1AAA1A; }
+      #background_top { background-color:#1b1b1b; height:12.55%; }
+      #contents { background-color:#232323; width:100%; height:87.5%; display:flex; justify-content:space-around; align-items:center; flex-direction:row; flex-wrap: wrap; }
+
+      #contents>a .screen {     /* 아이콘 스크린 전체 */
+        display:inline-block;
+        position:relative;
+        margin:50px;
+        width:300px;
+        height:300px;
+        border:2px solid black;
+      }
+      #contents>a .screen img {     /* 게임_이미지 */
+        position:absolute;
+        width:300px;
+        height:300px;
+        z-index:1;
+      }
+      #contents>a .screen span {       /* 호버시 등장 테두리 */
+        display:block;
+        position:absolute;
+        background:#434848;
+        transition: all .5s;
+        z-index:2;
+      }
+      #contents>a .screen span:nth-child(1) {top:0; height:5px; width:0;}
+      #contents>a .screen span:nth-child(2) {top:0; right:0; width:5px; height:0;}
+      #contents>a .screen span:nth-child(3) {bottom:0; right:0; height:5px; width:0;}
+      #contents>a .screen span:nth-child(4) {bottom:0; left:0; width:5px; height:0;}
+      #contents>a .screen:hover span:nth-child(1) {width:100%;}
+      #contents>a .screen:hover span:nth-child(2) {height:100%;}
+      #contents>a .screen:hover span:nth-child(3) {width:100%;}
+      #contents>a .screen:hover span:nth-child(4) {height:100%;}
+
+
+    </style>
+  </head>
+  <body>
+    <div id="background_top">
+      <a class="logo" href="index.html">InterRuze</a>
+      <nav>
+        <ul class="navbar">
+          <li><a href="index.html" class="main">MAIN</a></li>
+          <li><a href="game.html" class="game">GAME</a></li>
+          <li><a href="store.html" class="store">STORE</a></li>
+          <li><a href="#" class="news">NEWS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="contents">
+      <a href="colorz.html">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img src="images/colorz.png">
+        </div>
+      </a>
+      <a href="store.html">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img src="images/soundz.png">
+        </div>
+      </a>
+      <a href="store.html">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img src="images/howl.png">
+        </div>
+      </a>
+      <a href="colorbeus.html">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img src="images/colorbeus.png">
+        </div>
+      </a>
+      <a href="#">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img class="developing" src="images/developing.png">
+        </div>
+      </a>
+      <a href="#">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img class="developing" src="images/developing.png">
+        </div>
+      </a>
+      <a href="#">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img class="developing" src="images/developing.png">
+        </div>
+      </a>
+      <a href="#">
+        <div class="screen">
+          <span></span><span></span><span></span><span></span>
+          <img class="developing" src="images/developing.png">
+        </div>
+      </a>
+    </div>
+
+  </body>
+</html>

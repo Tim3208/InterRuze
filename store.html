@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
+    <style>
+      * { margin : 0; padding: 0; }
+      html, body { height: 100%; overflow: hidden; }
+      ul, li { list-style:none; }
+      input { display: none; }
+      a { text-decoration:none !important; transition: .5s; }
+      @font-face { font-family:'AppleSDGothicNeoEB'; src: url(fonts/AppleSDGothicNeoEB.ttf) format('truetype'); }
+      @font-face { font-family:'AppleSDGothicNeoUL'; src: url(fonts/AppleSDGothicNeoUL.ttf) format('truetype'); }
+      @font-face { font-family:'AppleSDGothicNeoM'; src: url(fonts/AppleSDGothicNeoM.ttf) format('truetype'); }
+
+
+
+      .logo {     /* 좌측 상단 인터루즈 */
+        float : left;
+        font-family: 'AppleSDGothicNeoM', sans-serif;
+        margin : 30px 0px 30px 130px;
+        font-size : 3em;
+        color : white;
+      }
+      nav { float:right; text-align:center; vertical-align:middle; display:inline-block; margin-right:50px; }
+      nav>ul>li a { display:block; }
+      nav>ul>li { float:left; }
+      nav>ul>li+li { margin-left:1px; }
+      nav>ul>li>a { width:150px; padding:40px 10px; color:#fff; font-size:30px; font-family: 'AppleSDGothicNeoM', sans-serif; }
+      .store { background-color: dimgray; }
+
+      .navbar>li a:visited { text-decoration:none; color:white; }     /* 네비게이션바 링크 데코 제거 */
+      .navbar>li a:hover { color:#1AAA1A; }
+      #background_top { background-color:#1b1b1b; height:12.5%; }
+      #contents { padding-left:400px; background-color:#232323; height:75%; }
+
+      #contents ul { width:700%; height:100%; transition:1s; overflow: hidden; }
+      #contents li { float:left; width:25%; height:100%; }
+      #pos1:checked~.slides { margin-left:0%; }
+      #pos2:checked~.slides { margin-left:-175%; }
+      #pos3:checked~.slides { margin-left:-350%; }
+      #pos4:checked~.slides { margin-left:-525%; }
+      #pos5:checked~.slides { margin-left:-800%; }
+      #pos6:checked~.slides { margin-left:-975%; }
+      #pos7:checked~.slides { margin-left:-1150%; }
+
+      #contents img {     /* 게임 이미지 */
+        width: 550px;
+        height: 550px;
+        float: left;
+        cursor : pointer;
+        margin: 60px 0 0 0;
+        z-index: 1;
+      }
+
+      #contents .paragraph {     /* 컬러즈 단락 전체 */
+        display: inline-block;
+        color: white;
+        font-size: 90px;
+        font-family: 'Viga', sans-serif;
+        margin: 50px 0 0 50px;
+      }
+      .paragraph .game_title {     /* 컬러즈 단락 -> Colorz */
+        display: block;
+        font-size: 90px;
+        font-family: 'Viga', sans-serif;
+        letter-spacing: 2px;
+      }
+      .paragraph .game_subtitle {     /* 컬러즈 단락 -> INTERRUZE */
+        display: block;
+        font-size: 30px;
+        font-family: 'AppleSDGothicNeoEB', sans-serif;
+        letter-spacing: 1.4px;
+        color: gray;
+        line-height: 0.1;
+      }
+      .paragraph .game_nowPay {     /* 컬러즈 단락 -> 현가격 */
+        font-size: 40px;
+        font-family: 'Viga', sans-serif;
+        letter-spacing: 1.4px;
+        color: white;
+        line-height: 0.1;
+      }
+      .paragraph .game_lastPay {     /* 컬러즈 단락 -> 이전가격 */
+        font-size: 30px;
+        font-family: 'AppleSDGothicNeoM', sans-serif;
+        letter-spacing: 1.4px;
+        text-decoration: line-through;
+        color: gray;
+        line-height: 1.0;
+      }
+      .paragraph .game_content {     /* 컬러즈 단락 -> 본문 */
+        display: block;
+        width: 630px;
+        margin-top: 50px;
+        font-size: 15px;
+        font-family: 'AppleSDGothicNeoUL', sans-serif;
+        letter-spacing: 1px;
+        color: darkgray;
+        line-height: -1.0;
+      }
+
+      button {    /* BUY NOW & LEARN MORE 버튼 */
+        display: inline-block;
+        margin: 50px 0 0 50px;
+        background: none;
+        color: #ccc;
+        width: 240px;
+        height: 80px;
+        border: 2px solid #338033;
+        font-size: 18px;
+        border-radius: 4px;
+        transition: .6s;
+        overflow: hidden;
+        cursor: pointer;
+        transition: .6s;
+      }
+      .btn_more { border: 0.5px solid #ffffff; margin-left: 50px;}
+      .btn_buy:hover { background-color: #338033; }
+      .btn_more:hover { background-color: #ffffff; color: black; }
+
+      label {
+        display : inline-block;
+        vertical-align : middle;
+        margin-left : 30px;
+        width : 13px;
+        height : 13px;
+        border : 0px solid;
+        background : #c5c5c5;
+        transition : 0.4s;
+        border-radius : 100%;
+        cursor : pointer;
+        box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.45);
+      }
+
+      .pos {
+        text-align : center;
+        position : absolute;
+        bottom : 50px;
+        left : -30px;
+        width : 100%;
+      }
+      #pos1:checked~.pos>label:nth-child(1){background:#232323;}
+      #pos2:checked~.pos>label:nth-child(2){background:#232323;}
+      #pos3:checked~.pos>label:nth-child(3){background:#232323;}
+      #pos4:checked~.pos>label:nth-child(4){background:#232323;}
+      #pos5:checked~.pos>label:nth-child(5){background:#232323;}
+      #pos6:checked~.pos>label:nth-child(6){background:#232323;}
+      #pos7:checked~.pos>label:nth-child(7){background:#232323;}
+    }
+    </style>
+  </head>
+  <body>
+    <div id="background_top">
+      <a class="logo" href="index.html">InterRuze</a>
+      <nav>
+        <ul class="navbar">
+          <li><a href="index.html" class="main">MAIN</a></li>
+          <li><a href="game.html" class="game">GAME</a></li>
+          <li><a href="store.html" class="store">STORE</a></li>
+          <li><a href="#" class="news">NEWS</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="contents">
+      <input type="radio" name="pos" id="pos1" checked>
+      <input type="radio" name="pos" id="pos2">
+      <input type="radio" name="pos" id="pos3">
+      <input type="radio" name="pos" id="pos4">
+      <input type="radio" name="pos" id="pos5">
+      <input type="radio" name="pos" id="pos6">
+      <input type="radio" name="pos" id="pos7">
+      <ul class="slides">
+        <li id="slide1">    <!--컬러즈-->
+          <img id="colorzImg" src="images/colorz.png">
+          <p class="paragraph">
+            <span class="game_title">Colorz</span>
+            <span class="game_subtitle">INTERRUZE</span>
+            <span class="game_nowPay">$11.99</span>
+            <span class="game_lastPay">$15.99</span>
+            <span class="game_content"> 색깔에 개성과 힘이 있는 세계 컬러즈에 어느날 마녀가 나타나 세상의 색을 모조리 훔쳐갔습니다.
+              사라진 소꿉친구 페르니에 대한 소식을 찾아 해매던 중, 의문의 빛이 말을 걸어오는데... 사라진 세상의 색과
+              잠적한 마녀의 행방, 동시에 사라진 페르니까지, 어떤 일이 일어날지 직접 탐험해보세요.</span>
+            <div class="btn_colorz">
+              <button class="btn_buy colorz" type="button">BUY NOW</button>
+              <button class="btn_more colorz" type="button">LEARN MORE</button>
+            </div>
+          </p>
+        </li>
+        <li id="slide2">    <!--사운즈-->
+          <img id="soundzImg" src="images/soundz.png">
+          <p class="paragraph">
+            <span class="game_title">Soundz</span>
+            <span class="game_subtitle">INTERRUZE</span>
+            <span class="game_nowPay">$4.99</span>
+            <span class="game_lastPay">$10.99</span>
+            <span class="game_content"> 날개를 다쳐 고통받던 박쥐는 마녀에게 어떤 힘을 받게 된 박쥐의 이야기. 컬러즈와 연동되는
+            세계관에서 또다른 캐릭터로 당신만의 길을 개척해보세요. 모바일 플랫폼으로 출시하는 사운즈는 가벼우면서도, 간단하지는
+            않을겁니다. 작중에 등장한 몬스터를 직접 조작하며 색다른 재미를 느껴보세요. </span>
+          </p>
+          <div class="wrapper">
+            <div class="btn_colorz">
+              <button class="btn_buy soundz" type="button">BUY NOW</button>
+              <button class="btn_more soundz" type="button">LEARN MORE</button>
+            </div>
+          </div>
+        </li>
+        <li id="slide3">    <!--하울-->
+          <img id="soundzImg" src="images/howl.png">
+          <p class="paragraph">
+            <span class="game_title">Howl</span>
+            <span class="game_subtitle">INTERRUZE</span>
+            <span class="game_nowPay">$6.99</span>
+            <span class="game_lastPay">$11.99</span>
+            <span class="game_content"> 아무것도 보이지 않는 어둠속에서, 강아지는 주인을 찾아 애처롭게 울부짖습니다. 그런데 그 하울링에 길이 밝혀져 보인다면?  </span>
+          </p>
+          <div class="wrapper">
+            <div class="btn_colorz">
+              <button class="btn_buy soundz" type="button">BUY NOW</button>
+              <button class="btn_more soundz" type="button">LEARN MORE</button>
+            </div>
+          </div>
+        </li>
+        <li id="slide4">    <!--컬러비우스-->
+            <img id="colorbiusImg" src="images/colorbius.png">
+            <p class="paragraph">
+              <span class="game_title">COLORBIUS</span>
+              <span class="game_subtitle">INTERRUZE</span>
+              <span class="game_nowPay">$9.99</span>
+              <span class="game_lastPay">$14.99</span>
+              <span class="game_content"> 컬러즈 유니버스의 최종편. 모든 시리즈의 가장 마지막 세대를 달리는 미래세계, 이곳에선 무슨 일이 일어나고 있는 것이며,
+                여기서 나가기 위해선 도대체 어떻게 해야하는 걸까요? 세계의 정점에서 직접 끝을 확인해보세요.</span>
+            </p>
+            <div class="wrapper">
+              <div class="btn_colorz">
+                <button class="btn_buy soundz" type="button">BUY NOW</button>
+                <button class="btn_more soundz" type="button">LEARN MORE</button>
+              </div>
+            </div>
+        </li>
+        <li id="slide5"></li>
+        <li id="slide6"></li>
+        <li id="slide7"></li>
+      </ul>
+
+      <p class="pos">     <!-- 슬라이드 선택 라벨 -->
+        <label for="pos1"></label>
+        <label for="pos2"></label>
+        <label for="pos3"></label>
+        <label for="pos4"></label>
+        <label for="pos5"></label>
+        <label for="pos6"></label>
+        <label for="pos7"></label>
+      </p>
+    </div>
+  </body>
+</html>
